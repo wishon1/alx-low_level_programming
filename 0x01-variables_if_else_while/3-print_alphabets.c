@@ -10,13 +10,18 @@ int main(void)
 	int lowCase;
 	int upCase;
 
-	for (lowCase = 97; lowCase <= 122; lowCase++)
+	lowCase = 97;
+	upCase = 65;
+
+	while (lowCase <= 122)
 	{
 		putchar(lowCase);
+		lowCase++;
 	}
-	for (upCase = 65; upCase <= 90; upCase++)
+	while (upCase <= 90)
 	{
 		putchar(upCase);
+		upCase++;
 	}
 	putchar('\n');
 	return (0);
