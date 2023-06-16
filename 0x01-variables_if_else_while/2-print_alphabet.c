@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main - start the program
- * return: Terminates the program with sucess(0)
+ * Return: Terminates the program with sucess(0)
  */
 int main(void)
 {
