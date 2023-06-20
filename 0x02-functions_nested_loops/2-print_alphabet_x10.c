@@ -1,12 +1,11 @@
 #include "main.h"
 /**
- * main - Declares and defines the function--
- * -- void print_alphabet_x10(void)
- *  Return: Returns void
+ * print_alphabet_x10 - function that prints 10 times the alphabet,
+ * in lowercase, followed by a new line.
  */
 void print_alphabet_x10(void)
 {
-	int letter;
+	char letter;
 	int linNum = 0;
 
 	while (linNum < 10)
