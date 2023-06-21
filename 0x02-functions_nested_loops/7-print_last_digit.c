@@ -7,8 +7,11 @@
 
 int print_last_digit(int num)
 {
-	int digit = num % 10;/*use % 10 to find last digit */
-
-	_putchar('0' + digit);
+	num = num % 10;/* use % 10 to find last digit */
+	if (num < 0)
+	{
+		num *= (-1);
+	}
+	_putchar(num + '0');
 	return (num);
 }
