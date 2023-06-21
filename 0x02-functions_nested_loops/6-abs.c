@@ -1,8 +1,14 @@
 #include "main.h"
 /**
- * main - defines the function with its parametres
- * function that computes the absolute value of an integer.
- * Return: Always return function data type
- *
+ * _abs - Display the  absolute value of integer.
+ * @n: Argument of int type to be returned
+ * Return: Return the absolute value of the integer
  */
-int _abs(int)
+int _abs(int n)
+	{
+		if (n >= 0)
+		{
+			return (n);
+		}
+		return (-n);
+	}
