@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * main - Defines the fuction prototype, macros and its body
- * function that computes the absolute value of an integer.
- * Return: Return function data type 
+ * print_sign - function that prints the sign of a number
+ * @n: function argument of type- int
+ * Return: Return 1 if n > 0, -1 if n < 0 else return 0
  */
 int print_sign(int n)
 {
@@ -20,5 +20,6 @@ int print_sign(int n)
 	{
 		_putchar('-');
 		return (-1);
-    }
+	}
+	return (n);
 }
