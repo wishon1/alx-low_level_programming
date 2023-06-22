@@ -4,7 +4,7 @@
  * @n: number of times table to print (datatype: int)
  * Return: void
  */
-void times_table(void)
+void print_times_table(int n)
 {
 	int x = 0, y, z;
 
