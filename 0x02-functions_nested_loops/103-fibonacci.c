@@ -6,23 +6,21 @@
  */
 int main(void)
 {
-	int a;
-	unsigned long int j, k, next, sum;
+	long int num_1, num_2, fn, afn;
 
-	j = 1;
-	k = 2;
-	sum = 0;
-
-	for (a = 1; a <= 33 a++)
+	num_1 = 1;
+	num_2 = 2;
+	fn = afn = 0;
+	while (fn <= 4000000)
 	{
-		if (j < 4000000 && (j % 2) == 0)
+		fn = num_1 + num_2;
+		num_1 = num_2;
+		num_2 = fn;
+		if ((num_1 % 2) == 0)
 		{
-			sum += j;
+			afn += num_1;
 		}
-		next = j + k;
-		j = k;
-		k = next;
 	}
-	printf("%lu\n", sum);
+	printf("%ld\n", afn);
 	return (0);
 }
