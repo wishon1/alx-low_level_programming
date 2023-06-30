@@ -17,7 +17,7 @@ char *rot13(char *s)
 
 	for (counter_one = 0; s[counter_one] != '\0'; counter_one++)
 	{
-		for (counter_two = counter_two; counter_two < 52; counter_two++)
+		for (counter_two = 0; counter_two < 52; counter_two++)
 		{
 			if (s[counter_one] == normalAlpha[counter_two])
 			{
