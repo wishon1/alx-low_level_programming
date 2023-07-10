@@ -1,21 +1,15 @@
 #include <stdio.h>
-#include <stdlib.h>
 /**
+ * main - prints the number of arguments passed into it.
+ * @argc: arguement count
+ * @argv:argurment of vector which is void
  *
- *
- *
+ * Return: 0
  */
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	(void)argv;
 
-	int index, sum;
-	
-	index = 1;
-	if (index <= argc)
-	{
-		sum = argc - index;
-		printf("%d\n", sum);
-	}
+	printf("%d", argc - 1);
 	return (0);
 }
