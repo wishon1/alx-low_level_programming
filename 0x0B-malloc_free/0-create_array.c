@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * create_array - creates an array of chars, and initializes it with a specific char.
+ * create_array - creates an array of chars, and initializes with a character
  * @size: size of array which must be positive digits only
  * @c: String filling each array index
  *
@@ -14,8 +14,6 @@ char *create_array(unsigned int size, char c)
 	unsigned int index = 0;
 
 	pointer = malloc(size * sizeof(char));
-	pointer[index] = c;
-
 	if (size == 0)
 	{
 		return (NULL);
