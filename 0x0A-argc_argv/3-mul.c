@@ -9,20 +9,15 @@
  */
 int main(int argc, char *argv[])
 {
-	int result;
-	char error[] = "error";
-	int index_one = 1;
-	int index_two = 2;
-
-	if (index_one < argc && index_two < argc)
+	if (argc < 3 || argc > 3)
 	{
-		result = atoi(argv[index_one]) * atoi(argv[index_two]);
-		printf("%d\n", result);
-	}
-	else
-	{
-		printf("%s\n", error);
+		printf("Error\n");
 		return (1);
+	}
+	else if (argc == 3)
+	{
+		printf("%d\n", (atoi(argv[1]) * atoi(argv[2])));
 	}
 	return (0);
 }
+
