@@ -23,11 +23,19 @@ char *_strdup(char *str)
 
 	pointer = malloc((strLen + 1) * sizeof(char));
 
-	strCounter = 0;
-	while (str[strCounter] != '\0')
+	if (pointer == NULL)
 	{
-		pointer[strCounter] = str[strCounter];
-		strCounter++;
+		return (NULL);
+	}
+	else
+	{
+		strCounter = 0;
+		while (str[strCounter] != '\0')
+		{
+			pointer[strCounter] = str[strCounter];
+			strCounter++;
+		}
+		pointer[strCounter] = '\0';
 	}
 	return (pointer);
 }
