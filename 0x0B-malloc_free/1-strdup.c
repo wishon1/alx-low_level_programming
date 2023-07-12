@@ -3,7 +3,7 @@
 /**
  * _strdup - returns a pointer to a newly allocated space in memory,
  * which contains a copy of the string given as a parameter.
- * @str: string to be copied 
+ * @str: string to be copied
  *
  * Return: returns a pointer to the duplicated string.
  */
@@ -14,7 +14,7 @@ char *_strdup(char *str)
 
 	if (str == NULL)
 		return (NULL);
-	
+
 	strLen = 0;
 	while (str[strLen] != '\0')
 	{
