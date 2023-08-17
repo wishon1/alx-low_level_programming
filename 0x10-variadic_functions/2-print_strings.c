@@ -15,14 +15,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	while (counter < n)
 	{
-		str = va_arg(print_str, char *);
+		ptr = va_arg(print_str, char *);
 		if (ptr == NULL)
 		{
 			printf("(nil)");
 		}
 		else
 		{
-			printf("%s", str);
+			printf("%s", ptr);
 		}
 
 		if ((separator != NULL) && (counter < (n - 1)))
