@@ -8,7 +8,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 {
 	va_list print_str;
 	unsigned int counter;
-	char *str;
+	char *ptr;
 
 	va_start(print_str, n);
 	counter = 0;
@@ -16,7 +16,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	while (counter < n)
 	{
 		str = va_arg(print_str, char *);
-		if (str == NULL)
+		if (ptr == NULL)
 		{
 			printf("(nil)");
 		}
@@ -25,7 +25,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			printf("%s", str);
 		}
 
-		if (separator != NULL && counter != (n - 1))
+		if ((separator != NULL) && (counter < (n - 1)))
 		{
 			printf("%s", separator);
 		}
