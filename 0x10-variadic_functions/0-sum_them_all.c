@@ -19,8 +19,9 @@ int sum_them_all(const unsigned int n, ...)
 
 	while (counter < n)
 	{
-		result = result + va_arg(nameOfList, int);
+		result +=  va_arg(nameOfList, int);
 		counter++;
 	}
+	va_end(nameOfList);
 	return (result);
 }
