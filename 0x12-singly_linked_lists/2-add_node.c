@@ -1,5 +1,5 @@
 #include "lists.h"
-int length(const char *ptr);
+int len(const char *ptr);
 /**
  * add_node - function that add a node
  * @head: ponter to node
@@ -24,17 +24,17 @@ list_t *add_node(list_t **head, const char *str)
 	{
 		new_node->next = *head;
 		new_node->str = strdup(str);
-		new_node->len = length(str);
+		new_node->len = len(str);
 		*head = new_node;
 	}
 	return (*head);
 }
 /**
- * length - get the length of the string.
+ * len - get the length of the string.
  * @ptr: pointer to string
  * Return: return lenght as int
  */
-int length(const char *ptr)
+int len(const char *ptr)
 {
 	int counter;
 
