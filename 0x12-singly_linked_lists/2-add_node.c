@@ -1,50 +1,36 @@
 #include "lists.h"
-int len(const char *ptr);
 /**
- * add_node - function that add a node
- * @head: ponter to node
- * @str: string
- * Return: pointer to the newly assigned int
+ * add_node - adds a new node at the beginning of a list_t list.
+ * @head: pointer to list_t
+ * @str: pointer.
+ * Return: pointer head
  */
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new_node;
+	list_t *_new_node;
+	unsigned int str_len;
 
 	if (head == NULL)
 		return (NULL);
-	new_node = malloc(sizeof(list_t));
-	if (new_node == NULL)
+
+	_new_node = malloc(sizeof(list_t));
+	if (_new_node == NULL)
+	{
 		return (NULL);
+	}
 
-	if (*head == NULL)
+	_new_node->str = strdup(str);
+	if (_new_node->str == NULL)
 	{
-		new_node->next = NULL;
+		free(_new_node);
+		return (NULL);
 	}
-	else
-	{
-		new_node->next = *head;
-		new_node->str = strdup(str);
-		new_node->len = len(str);
-		*head = new_node;
-	}
+
+	for (str_len = 0; str[str_len] != '\0'; str_len++)
+
+	_new_node->len = str_len;
+	_new_node->next = *head;
+	*head = _new_node;
+
 	return (*head);
-}
-/**
- * len - get the length of the string.
- * @ptr: pointer to string
- * Return: return lenght as int
- */
-int len(const char *ptr)
-{
-	int counter;
-
-	if (ptr == NULL)
-		return (0);
-
-	counter = 0;
-	while (ptr[counter] != '\0')
-	{
-		counter++;
-	}
-	return (counter);
 }
