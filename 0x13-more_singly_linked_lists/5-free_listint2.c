@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * free_listint - free a list
+ * free_listint2 - free a list
  * @head: pointer to the first list
  */
 
