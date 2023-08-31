@@ -23,7 +23,7 @@ void print_binary(unsigned long int n)
 
 	mask = mask << (num_bits - 1);
 
-	while (num_bits > 0)
+	for (; num_bits > 0; num_bits--)
 	{
 		if (n & mask)
 			_putchar('1');
@@ -31,7 +31,6 @@ void print_binary(unsigned long int n)
 			_putchar('0');
 
 		mask = mask >> 1;
-		num_bits--;
 	}
 }
 
