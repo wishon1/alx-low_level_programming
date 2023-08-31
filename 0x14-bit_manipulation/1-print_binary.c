@@ -2,28 +2,36 @@
 
 /**
  * print_binary - prints the binary representation of a number
- * @n: number in decimal
- *
- * Return: void
+ * @n: value to convert to binary.
  */
 
 void print_binary(unsigned long int n)
 {
-	unsigned long int mask = 1UL << (sizeof(unsigned long int) * 8 - 1);
-	int flag = 0;
+	unsigned long int mask = 1, num = n, num_bits = 0;
 
-	while (mask > 0)
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
+
+	while (num > 0)
+	{
+		num_bits++;
+		num = num >> 1;
+	}
+
+	mask = mask << (num_bits - 1);
+
+	while (num_bits > 0)
 	{
 		if (n & mask)
-		{
 			_putchar('1');
-			flag = 1;
-		}
-		else if (flag || mask == 1)
-		{
+		else
 			_putchar('0');
-		}
-		mask >>= 1;
+
+		mask = mask >> 1;
+		num_bits--;
 	}
 }
 
