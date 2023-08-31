@@ -2,7 +2,7 @@
 
 /**
  * print_binary - prints the binary representation of a number
- * @n: value to convert to binary.
+ * @n: number in decimal value to convert to binary
  */
 
 void print_binary(unsigned long int n)
@@ -23,7 +23,7 @@ void print_binary(unsigned long int n)
 
 	mask = mask << (num_bits - 1);
 
-	for (; num_bits > 0; num_bits--)
+	while (num_bits > 0)
 	{
 		if (n & mask)
 			_putchar('1');
@@ -31,6 +31,6 @@ void print_binary(unsigned long int n)
 			_putchar('0');
 
 		mask = mask >> 1;
+		num_bits--;
 	}
 }
-
