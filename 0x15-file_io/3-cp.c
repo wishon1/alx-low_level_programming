@@ -1,5 +1,5 @@
 #include "main.h"
-char *file_from(char *filename, char *buffer);
+char *file_from(char *fn, char *buffer);
 /**
  * file_from - Reads the content of a file into a buffer
  * @filename: Pointer to the name of the file to read
@@ -8,30 +8,30 @@ char *file_from(char *filename, char *buffer);
  * Return: Pointer to the buffer containing the file content
  */
 
-char *file_from(char *filename, char *buffer)
+char *file_from(char *fn, char *buffer)
 {
-	int fileDescriptor, closeResult;
+	int fd, closeResult;
 	ssize_t bytesRead, totalBytes = 0;
 
-	fileDescriptor = open(filename, O_RDONLY);
-	if (fileDescriptor == -1)
+	fd = open(fn, O_RDONLY);
+	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fn);
 		exit(98);
 	}
-	while ((bytesRead = read(fileDescriptor, buffer + totalBytes, 1024)) > 0)
+	while ((bytesRead = read(fd, buffer + totalBytes, 1024)) > 0)
 	{
 		totalBytes += bytesRead;
 	}
 	if (bytesRead == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fn);
 		exit(98);
 	}
-	closeResult = close(fileDescriptor);
+	closeResult = close(fd);
 	if (closeResult == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fileDescriptor);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 	return (buffer);
@@ -46,7 +46,7 @@ char *file_from(char *filename, char *buffer)
  */
 int main(int argc, char **argv)
 {
-	int fileToDescriptor, closeResult, count;
+	int f_d, closeResult, count;
 	ssize_t writeResult;
 	char *fileContent;
 	char buffer[4096];
@@ -56,9 +56,9 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	fileContent = file_from(argv[1], buffer);
-	fileToDescriptor = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (fileToDescriptor == -1)
+	f_d = file_from(argv[1], buffer);
+	f_d = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (f_d == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
@@ -67,18 +67,17 @@ int main(int argc, char **argv)
 	while (fileContent[count])
 		count++;
 
-	writeResult = write(fileToDescriptor, fileContent, count);
+	writeResult = write(f_d, fileContent, count);
 	if (writeResult == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	closeResult = close(fileToDescriptor);
+	closeResult = close(f_d);
 	if (closeResult == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fileToDescriptor);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_d);
 		exit(100);
 	}
 	return (1);
 }
-
