@@ -1,5 +1,5 @@
 #include "main.h"
-
+char *file_from(char *filename, char *buffer);
 /**
  * file_from - Reads the content of a file into a buffer
  * @filename: Pointer to the name of the file to read
