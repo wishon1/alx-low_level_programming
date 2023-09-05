@@ -1,20 +1,19 @@
 #include "main.h"
 
 /**
- * error_file - check if a file is opened
- * @fd_from: file descriptor for copying from and checking
- * @fd_to: file descriptor for the destination file
+ * handle_file_error - check if a file is opened
+ * @file_from: file descriptor for copying from and checking
+ * @file_to: file descriptor for the destination file
  * @argv: argument vector
- * Return: void
  */
-void handle_file_error(int file_from, int file_to, char *argv[]) 
+void handle_file_error(int file_from, int file_to, char *argv[])
 {
-	if (file_from == -1) 
+	if (file_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	if (file_to == -1) 
+	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
@@ -27,13 +26,13 @@ void handle_file_error(int file_from, int file_to, char *argv[])
  * @argv: argument vector
  * Return: 0 on success.
  */
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
 	int file_from, file_to, close_result;
 	ssize_t num_bytes_read, num_bytes_written;
 	char buffer[1024];
 
-	if (argc != 3) 
+	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
@@ -44,7 +43,7 @@ int main(int argc, char *argv[])
 	error_file(file_from, file_to, argv);
 
 	num_bytes_read = 1024;
-	while (num_bytes_read == 1024) 
+	while (num_bytes_read == 1024)
 	{
 		num_bytes_read = read(file_from, buffer, 1024);
 		if (num_bytes_read == -1)
@@ -55,13 +54,13 @@ int main(int argc, char *argv[])
 	}
 
 	close_result = close(file_from);
-	if (close_result == -1) 
+	if (close_result == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
 		exit(100);
 	}
 	close_result = close(file_to);
-	if (close_result == -1) 
+	if (close_result == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
 		exit(100);
