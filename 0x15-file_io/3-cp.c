@@ -1,11 +1,11 @@
 #include "main.h"
 #include <stdio.h>
+
 /**
- * error_file - check if a file is opened
- * @file_from: copy from and to check
- * @file_to: destination file
- * @argv: argument vector
- * Return: void
+ * error_file - Check if a file is opened and handle errors.
+ * @file_from: Source file descriptor.
+ * @file_to: Destination file descriptor.
+ * @argv: Argument vector.
  */
 void error_file(int file_from, int file_to, char *argv[])
 {
@@ -22,16 +22,16 @@ void error_file(int file_from, int file_to, char *argv[])
 }
 
 /**
- * main - copy content of a file into another file
- * @argc: argument count
- * @argv: argument vector
+ * main - Copy content of one file to another.
+ * @argc: Argument count.
+ * @argv: Argument vector.
  * Return: 0 on success.
  */
 int main(int argc, char *argv[])
 {
 	int file_from, file_to, er_close;
-	ssize_t nletters, nwr;
-	char buff[1024];
+	ssize_t nread, nwritten;
+	char buffer[1024];
 
 	if (argc != 3)
 	{
@@ -43,14 +43,14 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	error_file(file_from, file_to, argv);
 
-	nletters = 1024;
-	while (nletters == 1024)
+	nread = 1024;
+	while (nread == 1024)
 	{
-		nletters = read(file_from, buff, 1024);
-		if (nletters == -1)
+		nread = read(file_from, buffer, 1024);
+		if (nread == -1)
 			error_file(-1, 0, argv);
-		nwr = write(file_to, buff, nletters);
-		if (nwr == -1)
+		nwritten = write(file_to, buffer, nread);
+		if (nwritten == -1)
 			error_file(0, -1, argv);
 	}
 
