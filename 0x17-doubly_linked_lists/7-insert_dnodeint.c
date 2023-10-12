@@ -1,4 +1,4 @@
-#include"lists.h"
+#include "lists.h"
 /**
  * insert_dnodeint_at_index - insert an element in a specified index
  * @h: is a pointer
@@ -24,7 +24,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		*h = new;
 		return (new);
 	}
-	while (temp != NULL)
+	while (tem != NULL)
 	{
 		if (count == idx)
 		{
