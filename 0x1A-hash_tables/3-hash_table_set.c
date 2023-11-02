@@ -11,8 +11,8 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *new_node = NULL;
-	unsigned long int  = 0;
-	char *newkey = strdup((char *)key);
+	unsigned long int index = 0;
+	char *new_key = strdup((char *)key);
 
 	if (ht == NULL || key == NULL)
 		return (0);
@@ -21,24 +21,26 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (new_node == NULL)
 		return (0);
 
-	new_node->key = newkey;
+	/* Assign the key and value to the new node */
+	new_node->key = new_key;
 	new_node->value = strdup((char *)value);
-	index = key_index((const unsigned char *)newkey, ht->size);
+	index = key_index((const unsigned char *)new_key, ht->size);
 
+	/* insert the new node into the hash table */
 	if (ht->array[index] == NULL)
 	{
 		new_node->next = NULL;
 		ht->array[index] = new_node;
 	}
-	else
+	else /* if the slot at the index is not empty */
 	{
-		if (strcmp((ht->array[index])->key, newkey) == 0)
+		if (strcmp((ht->array[index])->key, new_key) == 0)
 		{
 			free(ht->array[index]->value);
 			ht->array[index]->value = NULL;
 			ht->array[index]->value = new_node->value;
 		}
-		else
+		else /* collision=true, insert new_node at beginn. of linked list */
 		{
 			new_node->next = ht->array[index];
 			ht->array[index] = new_node;
