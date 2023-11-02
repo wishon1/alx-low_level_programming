@@ -8,12 +8,14 @@
  */
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
-	unsigned long int array_index = hash_djb2(key);
+	/* Use the hash_djb2 function to generate a hash value for the key. */
+	unsigned long int arrayIndex = hash_djb2(key);
 
 	if (size == 0)
 		return (0);
 
-	array_index %= size;
+	/* % operation to ensure that the hash val is within the size of the array.*/
+	arrayIndex = arrayIndex %  size;
 
-	return (array_index);
+	return (arrayIndex);
 }
