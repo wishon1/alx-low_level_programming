@@ -1,24 +1,29 @@
+# Compiler
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic
-SRC = main.c school.c
-NAME = school
-OBJ = $(SRC:.c=.o)
-RM = rm -f
 
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Default target, builds the executable
 all: $(NAME)
 
+# Rule to build the executable
 $(NAME): $(OBJ)
-        $(CC) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
-%.o: %.c
-        $(CC) $(CFLAGS) -c $< -o $@
-
+# Rule to clean Emacs/Vim temporary files and the executable
 clean:
-	$(RM) $(NAME) $(OBJ) *~
+	$(RM) *~ $(NAME) *.[oa]
 
+# Rule to clean object files
 oclean:
-	$(RM) $(OBJ)
+	$(RM) *.[oa]
 
+# Rule to perform a complete clean (both clean and oclean)
 fclean: clean oclean
 
+# Rule to force recompilation by cleaning and rebuilding everything
 re: fclean all
